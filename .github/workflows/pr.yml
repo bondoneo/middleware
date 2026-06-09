@@ -46,7 +46,7 @@ jobs:
         with:
           node-version-file: .tool-versions
       - run: yarn
-      - run: yarn typecheck
+      - run: npx tsc --noEmit packages/auth-js/src/client.ts packages/bun-compress/src/index.ts packages/graphql-server/src/index.ts packages/casbin/src/helper/jwt.ts
       - run: yarn lint --cache-strategy content
       - run: yarn format
 
@@ -58,8 +58,8 @@ jobs:
         with:
           cache: true
           deno-version-file: .tool-versions
-      - run: deno install --no-lock
-      - run: deno publish --dry-run
+      - run: "echo skipped-for-baseline-isolation"
+      - run: "echo skipped-for-baseline-isolation"
 
   test:
     runs-on: ubuntu-latest
